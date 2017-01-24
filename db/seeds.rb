@@ -44,8 +44,8 @@ def get_swell_json_with_spot_id(id)
     get_json('http://magicseaweed.com/api/9g81Jsvjt2EaR7Xf3L5L7dIQd7c97EUI/forecast/?spot_id=' + id.to_s)
 end
 
-#infos_columns = [:location_id, :day, :size_min, :size_max, :swell_rating, :wind_speed, :wind_direction, :temperature, :weather, :chart_swell, :chart_period, :chart_wind]
-infos_columns = [:location_id, :day, :size_min, :size_max, :swell_rating, :temperature]
+infos_columns = [:location_id, :day, :size_min, :size_max, :swell_rating, :wind_speed, :wind_direction, :temperature, :weather, :chart_swell, :chart_period, :chart_wind]
+#infos_columns = [:location_id, :day, :size_min, :size_max, :swell_rating, :temperature]
 infos_insert_list = []
 
 time = DateTime.now.midnight.to_time.to_i
@@ -54,45 +54,15 @@ time = DateTime.now.midnight.to_time.to_i
 Location.find_each do |location|
   locid = location.id
 
-  #appfolio's locid is 10000
-  if locid == 10000
-    schart = "http:\/\/hist-2.msw.ms\/wave\/750\/12-1418083200-1.gif"
-    pchart = "http:\/\/hist-2.msw.ms\/wave\/750\/12-1418083200-2.gif"
-    wchart = "http://cdn.magicseaweed.com/gfs/750/12-1418083200-4.gif"
-    
-    #puts locid
-    
-    time = DateTime.now.midnight.to_time.to_i
-    
-    16.times do |i|
-      rating = 5
-      wspeed = Random.new.rand(1..20)
-      wdir = Random.new.rand(0..360)
-      temp = Random.new.rand(50..90)
-      w = Random.new.rand(1..22)
-      min = Random.new.rand(7..10) 
-      max = Random.new.rand(11..15) 
-      d = time + 3*3600*i
-      #infos_insert_list << Info.new(location_id: locid, day: d, size_min: min, size_max: max ,swell_rating: rating, wind_speed: wspeed, wind_direction:wdir, temperature:temp ,weather: w, chart_swell: schart, chart_period:pchart,chart_wind: wchart)
-      infos_insert_list << Info.new(location_id: locid, day: d, size_min: min, size_max: max ,swell_rating: rating, temperature:temp )
-    end
-    
-  else 
-    #schart = "http:\/\/hist-2.msw.ms\/wave\/750\/12-1418083200-1.gif"
-    #pchart = "http:\/\/hist-2.msw.ms\/wave\/750\/12-1418083200-2.gif"
-    #wchart = "http://cdn.magicseaweed.com/gfs/750/12-1418083200-4.gif"
-    
-    #puts locid
     wave_list = get_swell_json_with_spot_id(locid)
     time = DateTime.now.midnight.to_time.to_i
     counter = 0
     wave_list.each do |wave|
       counter += 1
       if counter < 17
-        #infos_insert_list << Info.new(location_id: locid, day:"#{wave['localTimestamp']}",size_min:"#{wave['swell']['minBreakingHeight']}",size_max:"#{wave['swell']['maxBreakingHeight']}",swell_rating:"#{wave['solidRating']}",wind_speed:"#{wave['wind']['speed']}",wind_direction:"#{wave['wind']['direction']}", temperature:"#{wave['condition']['temperature']}",weather:"#{wave['condition']['weather']}",chart_swell:"#{wave['charts']['swell']}",chart_period:"#{wave['charts']['period']}",chart_wind:"#{wave['charts']['wind']}")
-        infos_insert_list << Info.new(location_id: locid, day:"#{wave['localTimestamp']}",size_min:"#{wave['swell']['minBreakingHeight']}",size_max:"#{wave['swell']['maxBreakingHeight']}",swell_rating:"#{wave['solidRating']}",temperature:"#{wave['condition']['temperature']}")
+        infos_insert_list << Info.new(location_id: locid, day:"#{wave['localTimestamp']}",size_min:"#{wave['swell']['minBreakingHeight']}",size_max:"#{wave['swell']['maxBreakingHeight']}",swell_rating:"#{wave['solidRating']}",wind_speed:"#{wave['wind']['speed']}",wind_direction:"#{wave['wind']['direction']}", temperature:"#{wave['condition']['temperature']}",weather:"#{wave['condition']['weather']}",chart_swell:"#{wave['charts']['swell']}",chart_period:"#{wave['charts']['period']}",chart_wind:"#{wave['charts']['wind']}")
+        #infos_insert_list << Info.new(location_id: locid, day:"#{wave['localTimestamp']}",size_min:"#{wave['swell']['minBreakingHeight']}",size_max:"#{wave['swell']['maxBreakingHeight']}",swell_rating:"#{wave['solidRating']}",temperature:"#{wave['condition']['temperature']}")
       end
-    end
   end
 end
 puts "Importing all surf info to DB"
