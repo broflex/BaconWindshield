@@ -1,4 +1,4 @@
-	<div class="container">
+<div class="container">
 		<div class="row">
 			<div id="map-outer" class="col-md-12">
 				<div class="col-md-6 col-md-offset-3">
@@ -18,70 +18,7 @@
 							<%  @entries.each do |location| %>
 							<tr>
 								<td><%= link_to location.name, Location.find(location.id) %></td>
-								<td>	<div class="container">
-		<div class="row">
-			<div id="map-outer" class="col-md-12">
-				<div class="col-md-6 col-md-offset-3">
-					<table class="table table-striped">
-						<thead>
-							<font size="5"><strong><= @county.name > Forecast</strong></font>
-							<tr>
-								<th>Spots</th>
-								<th>Swell Rating</th>
-								<th>Swell Size</th>
-							</tr>
-	
-						</thead>
-	
-						<tbody>
-	
-							<  @entries.each do |location| >
-							<tr>
-								<td><= link_to location.name, Location.find(location.id) ></td>
 								<td>
-								< if !location.infos.empty?>
-									<shape = 0
-									  size_max = 0
-									  size_min = 0>
-									< wave = location.infos.first >
-									< shape = wave.swell_rating >
-									< size_max = wave.size_max>
-									< size_min = wave.size_min>
-								<end>
-									< case shape >
-									< when 0 >
-										<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
-									< when 1 >
-										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-									< when 2 >
-										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-									< when 3 >
-										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-									< when 4 >
-										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-									< when 5 >
-										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-									< end >
-								</td>
-								<td>
-									<=size_min>-<=size_max><small> ft</small>
-								</td>
-							</tr>
-	
-							< end >
-	
-						</tbody>
-					</table>
-				</div>
-				<div class="col-md-12">
-					<div align="center">
-						<= will_paginate @entries, renderer: BootstrapPagination::Rails >
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
 								<% if !location.infos.empty?%>
 									<%shape = 0
 									  size_max = 0
