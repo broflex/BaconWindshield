@@ -144,7 +144,11 @@ function initialize1() {
 		});
 	} else {
 		// Browser doesn't support Geolocation
-		handleNoGeolocation(false);
+		
+			pos2 = new google.maps.LatLng(59.909945,10.726364);
+				map.setCenter(pos2);
+
+		//handleNoGeolocation(false);
 	}
 }
 
