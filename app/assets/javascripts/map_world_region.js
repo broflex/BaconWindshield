@@ -129,16 +129,7 @@ function initialize1() {
 				      lat: position.coords.latitude,
 				      lng: position.coords.longitude
 				    };
-			var marker = new google.maps.Marker({
-				position : pos,
-				map : map,
-				icon : targetImage2,
-				title : 'You are here!',
-				visible : true
-
-			});
-			markers2.waveImage1 = targetImage1;
-			markers2.waveImage2 = targetImage2;
+			
 			markers2.push(marker);
 			infoWindow.setPosition(pos);
             infoWindow.setContent('Location found.');
@@ -150,7 +141,38 @@ function initialize1() {
 		// Browser doesn't support Geolocation
 		handleNoGeolocation(false);
 	}
-	
+	     // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+		  
+	var marker = new google.maps.Marker({
+				position : pos,
+				map : map,
+				icon : targetImage2,
+				title : 'You are here!',
+				visible : true
+
+			});
+			markers2.waveImage1 = targetImage1;
+			markers2.waveImage2 = targetImage2;
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
 	
 	
 }
