@@ -125,7 +125,7 @@ function initialize1() {
 
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position) {
-			pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
 			var marker = new google.maps.Marker({
 				position : pos,
@@ -145,7 +145,7 @@ function initialize1() {
 	} else {
 		// Browser doesn't support Geolocation
 		
-			pos2 = new google.maps.LatLng(59.909945,10.726364);
+			var pos2 = new google.maps.LatLng(59.909945,10.726364);
 				map.setCenter(pos2);
 
 		//handleNoGeolocation(false);
@@ -158,7 +158,7 @@ function handleNoGeolocation(errorFlag) {
 //	} else {
 //		var content = 'Error: Your browser doesn\'t support geolocation.';
 //	}
-	pos2 = new google.maps.LatLng(59.909945,10.726364);
+	var pos2 = new google.maps.LatLng(59.909945,10.726364);
 //	var marker = new google.maps.Marker({
 //		position : pos2,
 //		map : map,
