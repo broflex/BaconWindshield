@@ -146,7 +146,7 @@ var infoWindow = new google.maps.InfoWindow({map: map});
             map.setCenter(pos);
           }, function() {
 		   var pos = {
-              lat: 59.909945
+              lat: 59.909945,
               lng: 10.726364
             };
 		var marker = new google.maps.Marker({
@@ -169,7 +169,7 @@ var infoWindow = new google.maps.InfoWindow({map: map});
          // handleLocationError(false, infoWindow, map.getCenter());
 		function() {
 		   var pos = {
-              lat: 59.909945
+              lat: 59.909945,
               lng: 10.726364
             };
 		var marker = new google.maps.Marker({
@@ -190,7 +190,7 @@ var infoWindow = new google.maps.InfoWindow({map: map});
 
    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 	   var pos = {
-              lat: 59.909945
+              lat: 59.909945,
               lng: 10.726364
             };
         infoWindow.setPosition(pos);
