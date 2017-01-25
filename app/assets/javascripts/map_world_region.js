@@ -145,18 +145,53 @@ var infoWindow = new google.maps.InfoWindow({map: map});
             infoWindow.setContent('Location found.');
             map.setCenter(pos);
           }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
+		   var pos = {
+              lat: 59.909945
+              lng: 10.726364
+            };
+		var marker = new google.maps.Marker({
+				position : pos,
+				map : map,
+				icon : targetImage2,
+				title : 'You are here!',
+				visible : true
+
+			});
+			markers2.waveImage1 = targetImage1;
+			markers2.waveImage2 = targetImage2;
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Broser is blocking geolocation.');
+            map.setCenter(pos);
+           // handleLocationError(true, infoWindow, map.getCenter());
           });
         } else {
           // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
+         // handleLocationError(false, infoWindow, map.getCenter());
+		function() {
+		   var pos = {
+              lat: 59.909945
+              lng: 10.726364
+            };
+		var marker = new google.maps.Marker({
+				position : pos,
+				map : map,
+				icon : targetImage2,
+				title : 'You are here!',
+				visible : true
+
+			});
+			markers2.waveImage1 = targetImage1;
+			markers2.waveImage2 = targetImage2;
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Broser is blocking geolocation.');
+            map.setCenter(pos);
         }
       }
 
    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 	   var pos = {
-              lat: '5.909945'
-              lng: '10.726364'
+              lat: 59.909945
+              lng: 10.726364
             };
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
