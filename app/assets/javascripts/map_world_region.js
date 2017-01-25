@@ -124,8 +124,11 @@ function initialize1() {
 
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position) {
-			pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
+			//pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			var pos = {
+				      lat: position.coords.latitude,
+				      lng: position.coords.longitude
+				    };
 			var marker = new google.maps.Marker({
 				position : pos,
 				map : map,
@@ -137,6 +140,8 @@ function initialize1() {
 			markers2.waveImage1 = targetImage1;
 			markers2.waveImage2 = targetImage2;
 			markers2.push(marker);
+			infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
 				map.setCenter(pos);
 		}, function() {
 			handleNoGeolocation(true);
@@ -145,6 +150,9 @@ function initialize1() {
 		// Browser doesn't support Geolocation
 		handleNoGeolocation(false);
 	}
+	
+	
+	
 }
 
 function handleNoGeolocation(errorFlag) {
