@@ -144,7 +144,7 @@ function initialize1() {
 		});
 	} else {
 		// Browser doesn't support Geolocation
-		handleNoGeolocation(true);
+		handleNoGeolocation(false);
 	}
 }
 
@@ -154,14 +154,23 @@ function handleNoGeolocation(errorFlag) {
 	} else {
 		var content = 'Error: Your browser doesn\'t support geolocation.';
 	}
+	pos2 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
+	var marker = new google.maps.Marker({
+		position : pos2,
+		map : map,
+		icon : targetImage2,
+		title : 'You are here!',
+		visible : true
+
+	});
 	var options = {
 		map : map,
-		position : new google.maps.LatLng(60, 105),
+		position : pos2,
 		content : content
 	};
 
 	var infowindow = new google.maps.InfoWindow(options);
-	map.setCenter(options.position);
+	map.setCenter(pos2);
 }
 // google.maps.event.addDomListener(window, 'load', initialize); 
