@@ -61,7 +61,7 @@ function initialize2() {
 		var targetImage1 = new google.maps.MarkerImage('http://icons.iconarchive.com/icons/pixelkit/gentle-edges/32/Location-Map-icon.png', new google.maps.Size(32, 32), new google.maps.Point(0, 0), new google.maps.Point(16, 16));
 		var targetImage2 = new google.maps.MarkerImage('http://icons.iconarchive.com/icons/pixelkit/gentle-edges/16/Location-Map-icon.png', new google.maps.Size(16, 16), new google.maps.Point(0, 0), new google.maps.Point(8, 8));
 		var waveImage2 = new google.maps.MarkerImage('http://cdn.flaticon.com/png/16/48043.png', new google.maps.Size(16, 16), new google.maps.Point(0, 0), new google.maps.Point(8, 8));
-		var waveImage1 = new google.maps.MarkerImage('http://cdn.flaticon.com/png/64/48043.png', new google.maps.Size(64, 64), new google.maps.Point(0, 0), new google.maps.Point(32, 32));
+		var waveImage1 = new google.maps.MarkerImage('http://cdn.flaticon.com/png/16/48043.png', new google.maps.Size(16, 16), new google.maps.Point(0, 0), new google.maps.Point(8, 8));
 
 		//Check zoomlevel of browser
 		google.maps.event.addListener(map, 'zoom_changed', function() {
