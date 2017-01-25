@@ -38,7 +38,7 @@ function initialize1() {
 	var mapOptions = {
 		disableDefaultUI : false,
 
-		zoom : 4,
+		zoom : 2,
 
 		mapTypeControlOptions : {
 			mapTypeIds : [google.maps.MapTypeId.SATELLITE, MY_MAPTYPE_ID]
@@ -120,14 +120,18 @@ function initialize1() {
 
 	var mc = new MarkerClusterer(map, markers, mcOptions);
 
-	// Try HTML5 geolocation.
+
+	
+var infoWindow = new google.maps.InfoWindow({map: map});
+
+        // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
-            };		  
-	var marker = new google.maps.Marker({
+            };
+		var marker = new google.maps.Marker({
 				position : pos,
 				map : map,
 				icon : targetImage2,
@@ -137,7 +141,6 @@ function initialize1() {
 			});
 			markers2.waveImage1 = targetImage1;
 			markers2.waveImage2 = targetImage2;
-
             infoWindow.setPosition(pos);
             infoWindow.setContent('Location found.');
             map.setCenter(pos);
@@ -150,25 +153,11 @@ function initialize1() {
         }
       }
 
-	
-	
-}
-
-function handleNoGeolocation(errorFlag) {
-	if (errorFlag) {
-		var content = 'Error: The Geolocation service failed.';
-	} else {
-		var content = 'Error: Your browser doesn\'t support geolocation.';
-	}
-
-	var options = {
-		map : map,
-		position : new google.maps.LatLng(60, 105),
-		content : content
-	};
-
-	var infowindow = new google.maps.InfoWindow(options);
-	map.setCenter(options.position);
-}
+   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      }
 
 // google.maps.event.addDomListener(window, 'load', initialize); 
