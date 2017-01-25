@@ -1,21 +1,21 @@
-<= form_for(@county) do |f| >
-  < if @county.errors.any? >
+<%= form_for(@county) do |f| %>
+  <% if @county.errors.any? %>
     <div id="error_explanation">
-      <h2><= pluralize(@county.errors.count, "error") > prohibited this county from being saved:</h2>
+      <h2><%= pluralize(@county.errors.count, "error") %> prohibited this county from being saved:</h2>
 
       <ul>
-      < @county.errors.full_messages.each do |message| >
-        <li><= message ></li>
-      < end >
+      <% @county.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
-  < end >
+  <% end %>
 
   <div class="field">
-    <= f.label :name ><br>
-    <= f.text_field :name >
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
   </div>
   <div class="actions">
-    <= f.submit >
+    <%= f.submit %>
   </div>
-< end >
+<% end %>
