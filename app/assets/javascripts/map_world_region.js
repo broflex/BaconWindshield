@@ -154,6 +154,10 @@ var infoWindow = new google.maps.InfoWindow({map: map});
       }
 
    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+	   var pos = {
+              lat: '5.909945'
+              lng: '10.726364'
+            };
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
                               'Error: The Geolocation service failed.' :
