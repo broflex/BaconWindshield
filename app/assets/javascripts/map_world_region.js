@@ -154,8 +154,7 @@ function handleNoGeolocation(errorFlag) {
 	} else {
 		var content = 'Error: Your browser doesn\'t support geolocation.';
 	}
-	pos2 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
+	pos2 = new google.maps.LatLng(59.909945,10.726364);
 	var marker = new google.maps.Marker({
 		position : pos2,
 		map : map,
