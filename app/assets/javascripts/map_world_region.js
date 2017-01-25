@@ -38,7 +38,7 @@ function initialize1() {
 	var mapOptions = {
 		disableDefaultUI : false,
 
-		zoom : 2,
+		zoom : 3,
 
 		mapTypeControlOptions : {
 			mapTypeIds : [google.maps.MapTypeId.SATELLITE, MY_MAPTYPE_ID]
