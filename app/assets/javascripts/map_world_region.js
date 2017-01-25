@@ -120,36 +120,13 @@ function initialize1() {
 
 	var mc = new MarkerClusterer(map, markers, mcOptions);
 
-	// Try to use geolocation
-
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position) {
-			//pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			var pos = {
-				      lat: position.coords.latitude,
-				      lng: position.coords.longitude
-				    };
-			
-			markers2.push(marker);
-			infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-				map.setCenter(pos);
-		}, function() {
-			handleNoGeolocation(true);
-		});
-	} else {
-		// Browser doesn't support Geolocation
-		handleNoGeolocation(false);
-	}
-	     // Try HTML5 geolocation.
+	// Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
-            };
-
-		  
+            };		  
 	var marker = new google.maps.Marker({
 				position : pos,
 				map : map,
