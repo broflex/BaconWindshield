@@ -149,27 +149,28 @@ function initialize1() {
 }
 
 function handleNoGeolocation(errorFlag) {
-	if (errorFlag) {
-		var content = 'Error: The Geolocation service failed.';
-	} else {
-		var content = 'Error: Your browser doesn\'t support geolocation.';
-	}
+//	if (errorFlag) {
+//		var content = 'Error: The Geolocation service failed.';
+//	} else {
+//		var content = 'Error: Your browser doesn\'t support geolocation.';
+//	}
 	pos2 = new google.maps.LatLng(59.909945,10.726364);
-	var marker = new google.maps.Marker({
-		position : pos2,
-		map : map,
-		icon : targetImage2,
-		title : 'You are here!',
-		visible : true
+//	var marker = new google.maps.Marker({
+//		position : pos2,
+//		map : map,
+//		icon : targetImage2,
+//		title : 'You are here!',
+//		visible : true
+//
+//	});
+//	var options = {
+//		map : map,
+//		position : pos2,
+//		content : content
+//	};
 
-	});
-	var options = {
-		map : map,
-		position : pos2,
-		content : content
-	};
-
-	var infowindow = new google.maps.InfoWindow(options);
+//	var infowindow = new google.maps.InfoWindow(options);
 	map.setCenter(pos2);
+	
 }
 // google.maps.event.addDomListener(window, 'load', initialize); 
